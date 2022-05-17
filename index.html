@@ -3,10 +3,81 @@
 	<head>
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
+		<SCRIPT LANGUAGE="JavaScript">
+			function menu_button_clicked(x) {
+				div_array = new Array()
+				div_array[0] = document.getElementById("welcome")
+				div_array[1] = document.getElementById("register")
+				div_array[2] = document.getElementById("login")
+				div_array[3] = document.getElementById("about")
+				div_array[4] = document.getElementById("full_game")
+				for (let i = 0; i < 5; i++) {
+					div_array[i].hidden = (i!=x);
+				}
+			}
+		</SCRIPT>
+		<link rel="stylesheet" type="text/css" href="decoration.css" />
+		<link rel="shortcut icon" href="./resources/logo_ms_packman.jpg">
 	</head>
 
 	<body>
-		<div id="score">
+		<div class="banner1" layout = "row">
+			<img src="./resources/logo_ms_packman.jpg" width = 20% height= 100px/>
+
+			<div class="banner2" layout = "row">
+				<div class="banner__lables">
+
+					<div class="banner__text">
+						<input type=button style="text-decoration:none" onclick="menu_button_clicked(0)" value="Welcome" />
+					</div>
+
+					<div class="banner__text"> | </div>
+					<div class="banner__text">
+						<input type=button style="text-decoration:none" onclick="menu_button_clicked(1)" value="Register"/>
+					</div>
+
+					<div class="banner__text"> | </div>
+					<div class="banner__text">
+						<input type=button style="text-decoration:none" onclick="menu_button_clicked(2)" value="Login"/>
+					</div>
+
+					<div class="banner__text"> | </div>
+					<div class="banner__text">
+						<input type=button style="text-decoration:none" onclick="menu_button_clicked(3)" value="About"/>
+					</div>
+				</div>
+
+				<div class = "full_game" id = "welcome" hidden = true>
+					<P ID="pText"> welcome b!!! </P>
+				</div>
+				<div class = "full_game" id = "register" hidden = true>
+					<P ID="pText"> register b!!! </P>
+				</div>
+				<div class = "full_game" id = "login" hidden = true>
+					<P ID="pText"> login b!!! </P>
+				</div>
+				<div class = "full_game" id = "about" hidden = true>
+					<P ID="pText"> about b!!! </P>
+				</div>
+
+				<div class = "full_game" id = "full_game" hidden = true>
+					<div class = "full_game_text">
+						<div id="score">
+							<label for="lblScore">SCORE:</label>
+							<input id="lblScore" type="text" />
+						</div>
+						<div id="time">
+							<label for="lblTime">TIME:</label>
+							<input id="lblTime" type="text" />
+						</div>
+						<div id="game">
+							<canvas id="canvas" height="600" width="600"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div id="score">
 			<label for="lblScore">SCORE:</label>
 			<input id="lblScore" type="text" />
 		</div>
@@ -17,5 +88,7 @@
 		<div id="game">
 			<canvas id="canvas" height="600" width="600"></canvas>
 		</div>
+		 -->
+		
 	</body>
 </html>

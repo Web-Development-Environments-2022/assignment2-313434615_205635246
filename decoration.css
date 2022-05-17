@@ -1,0 +1,130 @@
+html,
+body {
+	margin: 0;
+    background-color: blueviolet;
+}
+
+.banner1 {
+    float: left;
+    width: 100%;
+    height:100px;
+}
+
+.banner2 {
+    width: 100%;
+    float: left;
+    height: inherit /2 ;
+    background-color: red;
+}
+
+.full_game {
+    width: 100%;
+    height: 600px;
+    margin-top: 50px;
+    background-color: rgb(77, 234, 34);
+}
+
+.full_game_text {
+    margin-inline-start: 20px;
+    display: inline-block;
+	padding: 16px;
+    flex-grow: 1;
+	line-height: 0;
+	color: #ffffff;
+	font-family: "Quicksand", sans-serif;
+}
+
+.banner__lables {
+	float: left;
+	padding: 16px;
+
+}
+
+.banner__text {
+	display: inline-block;
+	padding: 10px;
+	flex-grow: 1;
+	line-height: 0;
+	color: #ffffff;
+	font-family: "Quicksand", sans-serif;
+  }
+
+  .banner__logo {
+	margin-left: 20px;
+	margin-top: 10px;
+	float: left;
+	flex-grow: 1;
+  }
+  
+  a {
+	color: white;
+	text-decoration: none;
+  }
+  abc.anchor {
+    display: block;
+    top: 500px;
+    text-decoration: none;
+    color: white;
+    }
+
+  .section {
+	margin-left: 30px;
+	margin-right: 30px;
+  }
+
+ /* headlines with lines */
+.decorated{
+    padding-top: 70px;
+	  margin-left: 10;
+    overflow: hidden;
+    text-align: center;
+ }
+.decorated > span{
+    position: relative;
+    display: inline-block;
+}
+.decorated > span:before, .decorated > span:after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    border-bottom: 4px solid;
+    width: 1000px; /* half of limiter*/
+    margin: 0 20px;
+	color: #34E2FD;
+}
+.decorated > span:before{
+    right: 100%;
+}
+.decorated > span:after{
+    left: 100%;
+}
+
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width:100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+  .myTable { background-color:#FFFFE0;border-collapse:collapse;font-family:Georgia, Garamond, Serif;color:black; }
+  .myTable th { width:25%;font:bold 18px/1.1em Arial, Helvetica, Sans-Serif;text-shadow: 1px 1px 4px black;letter-spacing:0.3em;background-color:#BDB76B;color:white; }
+  .myTable td, .myTable th { padding:5px;border:1px solid #BDB76B; }
+  .myTable td { line-height:3.5em; }
+  
+.active {
+	background-color: #e0ec34; /* Add an active/current color */
+  }
