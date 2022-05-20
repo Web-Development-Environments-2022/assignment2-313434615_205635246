@@ -95,9 +95,42 @@ function GetKeyPressed() {
 	if (keysDown[39]) {
 		return 4;
 	}
+	return 0;
 }
 
-function Draw() {
+function packmanArgs(dir){
+	var args = new Object();
+	switch(dir){
+		case 1:
+			args.ang1 = 1.65;
+			args.ang2 = 3.35;
+			args.dx = 15;
+			args.dy = 5;
+			break;
+		case 2:
+			args.ang1 = 0.65;
+			args.ang2 = 2.35;
+			args.dx = 15;
+			args.dy = -5;
+			break;
+		case 3:
+			args.ang1 = 1.15;
+			args.ang2 = 2.85;
+			args.dx = -5;
+			args.dy = -15;
+			break;
+		default:
+			args.ang1 = 0.15;
+			args.ang2 = 1.85;
+			args.dx = 5;
+			args.dy = -15;
+			break;												
+	}
+	return args;
+}
+
+
+function Draw(direction) {
 	canvas.width = canvas.width; //clean board
 	lblScore.value = score;
 	lblTime.value = time_elapsed;
@@ -106,14 +139,16 @@ function Draw() {
 			var center = new Object();
 			center.x = i * 60 + 30;
 			center.y = j * 60 + 30;
-			if (board[i][j] == 2) {
+			if (board[i][j] == 2){
+				var args = packmanArgs(direction);
 				context.beginPath();
-				context.arc(center.x, center.y, 30, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
+				context.arc(center.x, center.y, 30, args.ang1 * Math.PI, args.ang2 * Math.PI); // half circle   //down
 				context.lineTo(center.x, center.y);
 				context.fillStyle = pac_color; //color
 				context.fill();
 				context.beginPath();
-				context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
+				context.arc(center.x + args.dx, center.y + args.dy, 5, 0, 2 * Math.PI); // circle
+				//context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
 				context.fillStyle = "black"; //color
 				context.fill();
 			} else if (board[i][j] == 1) {
@@ -130,10 +165,13 @@ function Draw() {
 		}
 	}
 }
-
+var lastPressed = 4
 function UpdatePosition() {
 	board[shape.i][shape.j] = 0;
 	var x = GetKeyPressed();
+	if (x != 0){
+		lastPressed = x;
+	}
 	if (x == 1) {
 		if (shape.j > 0 && board[shape.i][shape.j - 1] != 4) {
 			shape.j--;
@@ -167,6 +205,6 @@ function UpdatePosition() {
 		window.clearInterval(interval);
 		window.alert("Game completed");
 	} else {
-		Draw();
+		Draw(lastPressed);
 	}
 }
