@@ -34,11 +34,13 @@ body {
 	font-family: "Quicksand", sans-serif;
 }
 
-.banner__lables {
-	float: left;
-	padding: 16px;
 
-}
+
+
+
+
+
+
 
 .banner__text {
 	display: inline-block;
@@ -47,84 +49,63 @@ body {
 	line-height: 0;
 	color: #ffffff;
 	font-family: "Quicksand", sans-serif;
-  }
+}
 
-  .banner__logo {
-	margin-left: 20px;
+.banner__lables {
+	float: left;
+	padding: 16px;
+}
+
+
+
+.banner__logo {
+    margin-left: 20px;
 	margin-top: 10px;
 	float: left;
 	flex-grow: 1;
-  }
+}
   
-  a {
-	color: white;
-	text-decoration: none;
-  }
-  abc.anchor {
-    display: block;
-    top: 500px;
-    text-decoration: none;
-    color: white;
-    }
-
-  .section {
-	margin-left: 30px;
-	margin-right: 30px;
-  }
-
- /* headlines with lines */
-.decorated{
-    padding-top: 70px;
-	  margin-left: 10;
-    overflow: hidden;
-    text-align: center;
- }
-.decorated > span{
-    position: relative;
-    display: inline-block;
-}
-.decorated > span:before, .decorated > span:after{
-    content: '';
-    position: absolute;
-    top: 50%;
-    border-bottom: 4px solid;
-    width: 1000px; /* half of limiter*/
-    margin: 0 20px;
-	color: #34E2FD;
-}
-.decorated > span:before{
-    right: 100%;
-}
-.decorated > span:after{
-    left: 100%;
+.banner_button{
+    font-size: 16px;
+    background-color: #f34c4c; /* Red */
+     color: black;
 }
 
-div.gallery {
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: 180px;
+.big_button {
+    font-size: 32px;
+    background-color: #e7e7e7; /* Gray */
+    color: black;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
-div.gallery:hover {
-  border: 1px solid #777;
+.first_text{
+    margin-left: 24px;
+    text-align: left;
+    text-decoration: line-through;
+    font-size: large;
 }
-
-div.gallery img {
-  width:100%;
-  height: auto;
-}
-
-div.desc {
-  padding: 15px;
-  text-align: center;
-}
-
-  .myTable { background-color:#FFFFE0;border-collapse:collapse;font-family:Georgia, Garamond, Serif;color:black; }
-  .myTable th { width:25%;font:bold 18px/1.1em Arial, Helvetica, Sans-Serif;text-shadow: 1px 1px 4px black;letter-spacing:0.3em;background-color:#BDB76B;color:white; }
-  .myTable td, .myTable th { padding:5px;border:1px solid #BDB76B; }
-  .myTable td { line-height:3.5em; }
   
 .active {
 	background-color: #e0ec34; /* Add an active/current color */
+  }
+
+  .container {
+    display: table;
+    margin-left: 20px;
+    border-spacing: 30px 15px;
+  }
+  .form-group
+  {
+    display: table-row;
+  }
+  .form_lable {
+    display: table-cell;
+  }
+  .input_error {
+    display: table-cell;
+    color: #f34c4c; /* Red */
+  }
+  .form_input{
+    display: table-cell;
   }

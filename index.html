@@ -3,6 +3,8 @@
 	<head>
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
+		<script type="text/javascript" src="./validation.js"></script>
+
 		<SCRIPT LANGUAGE="JavaScript">
 			function menu_button_clicked(x) {
 				div_array = new Array()
@@ -23,43 +25,95 @@
 	<body>
 		<div class="banner1" layout = "row">
 			<img src="./resources/logo_ms_packman.jpg" width = 20% height= 100px/>
-
 			<div class="banner2" layout = "row">
 				<div class="banner__lables">
-
 					<div class="banner__text">
-						<input type=button style="text-decoration:none" onclick="menu_button_clicked(0)" value="Welcome" />
+						<input type=button class = "banner_button" style="text-decoration:none" onclick="menu_button_clicked(0)" value="Welcome"/>
 					</div>
-
 					<div class="banner__text"> | </div>
 					<div class="banner__text">
-						<input type=button style="text-decoration:none" onclick="menu_button_clicked(1)" value="Register"/>
+						<input type=button class = "banner_button" style="text-decoration:none" onclick="menu_button_clicked(1)" value="Register"/>
 					</div>
-
 					<div class="banner__text"> | </div>
 					<div class="banner__text">
-						<input type=button style="text-decoration:none" onclick="menu_button_clicked(2)" value="Login"/>
+						<input type=button class = "banner_button" style="text-decoration:none" onclick="menu_button_clicked(2)" value="Login"/>
 					</div>
-
 					<div class="banner__text"> | </div>
 					<div class="banner__text">
-						<input type=button style="text-decoration:none" onclick="menu_button_clicked(3)" value="About"/>
+						<input type=button class = "banner_button" style="text-decoration:none" onclick="menu_button_clicked(3)" value="About"/>
 					</div>
 				</div>
+<!------------------------------------------------------------------------------------------------------------------------welcome------------------------------------------->
+				<div class = "full_game" id = "welcome">
+					<P ID="pText"> this is packman! </P>
+					<img src="./resources/logo_ms_packman.jpg" width = 30% height= 200px/>
+					<table>
+						<tr><td>
+							<input type=button class = "big_button" style="text-decoration:none" onclick="menu_button_clicked(1)" value=" Register here "/>					
+							<input type=button class = "big_button" style="text-decoration:none" onclick="menu_button_clicked(2)" value=" Login here "/>
+						</td></tr>
+					</table>
+				</div>
+<!------------------------------------------------------------------------------------------------------------------------register------------------------------------------->
+				<div class = "full_game" id = "register" hidden = true>					
+					<h1 class="text-center text-success">
+						Register for free 
+					</h1>
+					<p class="text-center">
+					  Please enter your personal details
+					</p>
+					<div class="container">
+					<!--	<form> -->
+							<div class="form-group">
+								<label for ="user" class="form_lable">User name:   </label>
+								<input type="text" class="form_input" name="username" id="usernames" class="form-control">
+								<label id="usercheck" class="input_error" ></label>
+							</div>
+							<div class="form-group">
+								<label for="password" class="form_lable">Password:    </label>
+								<input type="password" class="form_input" name="pass" id="password" class="form-control">
+								<label id="passcheck" class="input_error">	</label>
+							</div>
 
-				<div class = "full_game" id = "welcome" hidden = true>
-					<P ID="pText"> welcome b!!! </P>
+							<div class="form-group">
+								<label for="full_name" class="form_lable">Full name:   </label>
+								<input type="text" class="form_input" name="fullname" id="fullnames" class="form-control">
+								<h5 id="fullnamecheck" class="input_error"></h5>
+							</div>
+							<div class="form-group">
+								<label for="user" class="form_lable">Email:       </label>
+								<input type="email" class="form_input" name="email" id="email" required class="form-control">
+								<label id="emailcheck" class="input_error"></label>										
+							</div>
+							<div class="form-group">
+								<label for="user" class="form_lable">Date of birdate:</label>
+								<input type="date" class="form_input" name="date" id="date" required class="form-control">
+								<label id="datecheck" class="input_error"></label>										
+							</div>
+							<input type="button" id="submitbtn" value="Submit" class="btn btn-primary">
+						<!--</form>-->
+					</div>
+					<!--  Including validation.js jQuery Script -->
+					<script src="validation.js"></script>
 				</div>
-				<div class = "full_game" id = "register" hidden = true>
-					<P ID="pText"> register b!!! </P>
-				</div>
+<!------------------------------------------------------------------------------------------------------------------------Login------------------------------------------->
 				<div class = "full_game" id = "login" hidden = true>
-					<P ID="pText"> login b!!! </P>
-				</div>
-				<div class = "full_game" id = "about" hidden = true>
-					<P ID="pText"> about b!!! </P>
-				</div>
-
+					<h1 class="text-center text-success">
+						Login to start 
+					</h1>
+					<div class="container">
+						<div class="form-group">
+							<label for ="user" class="form_lable">User name:   </label>
+							<input type="text" class="form_input" name="username" id="loginuser" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="password" class="form_lable">Password:    </label>
+							<input type="password" class="form_input" name="pass" id="loginpassword" class="form-control">
+						</div>
+						<input type="button" id="loginbtn" value="Submit" class="btn btn-primary">
+						<label id="userpasscheck" class="input_error">	</label>
+					</div>
+<!------------------------------------------------------------------------------------------------------------------------Game------------------------------------------->
 				<div class = "full_game" id = "full_game" hidden = true>
 					<div class = "full_game_text">
 						<div id="score">
@@ -77,18 +131,5 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div id="score">
-			<label for="lblScore">SCORE:</label>
-			<input id="lblScore" type="text" />
-		</div>
-		<div id="time">
-			<label for="lblTime">TIME:</label>
-			<input id="lblTime" type="text" />
-		</div>
-		<div id="game">
-			<canvas id="canvas" height="600" width="600"></canvas>
-		</div>
-		 -->
-		
 	</body>
 </html>
