@@ -81,23 +81,66 @@ function findRandomEmptyCell(board) {
 	}
 	return [i, j];
 }
+//////////////////////////////////////////////////////////////all the importent arguments screened in the game
+let right_key = 39;
+let up_key = 38;
+let down_key = 40;
+let left_key = 37;
+let number_of_balls = 50;
+let ball5 = 30;
+let ball15 = 15;
+let ball25 = 5;
+let timer = 60
+let num_of_monsters = 1;
 
+function setKeyRight(val){
+	right_key = val;
+}
+function setKeyLeft(val){
+	left_key = val;
+}
+function setKeyUp(val){
+	up_key = val;
+}
+function setKeyDown(val){
+	down_key = val;
+}
+function setBallsNumber(n){
+	number_of_balls = n;
+	setBallsPercentage(n);
+}
+function setBallsPercentage(n){
+	ball5 = n * 0.6 - (n * 0.6 % 1);
+	ball15 = n * 0.3 - (n * 0.3 % 1);
+	ball25 = n * 0.1 - (n * 0.1 % 1);
+	var x = n - (ball5 + ball15 + ball25);
+	ball5 += x;
+}
+//sets the time game
+function setTimeGame(t){
+	timer = t;
+}
+function setMonsters(n){
+	num_of_monsters = n;
+}
+
+//balagan bamisparim
 function GetKeyPressed() {
-	if (keysDown[38]) {
+	if (keysDown[up_key]) {
 		return 1;
 	}
-	if (keysDown[40]) {
+	if (keysDown[down_key]) {
 		return 2;
 	}
-	if (keysDown[37]) {
+	if (keysDown[left_key]) {
 		return 3;
 	}
-	if (keysDown[39]) {
+	if (keysDown[right_key]) {
 		return 4;
 	}
 	return 0;
 }
-
+////////////////////////////////////////
 function packmanArgs(dir){
 	var args = new Object();
 	switch(dir){
@@ -148,7 +191,6 @@ function Draw(direction) {
 				context.fill();
 				context.beginPath();
 				context.arc(center.x + args.dx, center.y + args.dy, 5, 0, 2 * Math.PI); // circle
-				//context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
 				context.fillStyle = "black"; //color
 				context.fill();
 			} else if (board[i][j] == 1) {

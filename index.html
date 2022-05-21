@@ -13,7 +13,9 @@
 				div_array[2] = document.getElementById("login")
 				div_array[3] = document.getElementById("about")
 				div_array[4] = document.getElementById("full_game")
-				for (let i = 0; i < 5; i++) {
+				div_array[5] = document.getElementById("game_setting")
+
+				for (let i = 0; i < 6 ; i++) {
 					div_array[i].hidden = (i!=x);
 				}
 			}
@@ -134,6 +136,54 @@
 						<canvas id="canvas" height="600" width="600"></canvas>
 					</div>
 				</div>
+<!------------------------------------------------------------------------------------------------------------------------Game------------------------------------------->
+				<div class = "full_game" id = "game_setting" hidden = true>
+					<div class="container">
+						<div class="form-group">
+							<label for ="rightkey" class="form_lable">Right:   </label>
+							<input type="text" class="form_input" name="rightkey" id="rightkey" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for ="leftkey" class="form_lable">Left:   </label>
+							<input type="text" class="form_input" name="leftkey" id="leftkey" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for ="upkey" class="form_lable">Up:   </label>
+							<input type="text" class="form_input" name="upkey" id="upkey" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for ="downkey" class="form_lable">Down:   </label>
+							<input type="text" class="form_input" name="downkey" id="downkey" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for ="ballsnumber" class="form_lable">Number of balls between 50-90 (defualt 50):</label>
+							<input type="number" class="form_input" name="ballsnumber" id="ballsnumber" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for ="ball60" class="form_lable">Color ball 5 points:</label>
+							<input type="color" id="ball60" name="ball60" value="#e66465">
+						</div>
+						<div class="form-group">
+							<label for ="ball30" class="form_lable">Color ball 15 points:</label>
+							<input type="color" id="ball30" name="ball30" value="#e66465">
+						</div>
+						<div class="form-group">
+							<label for ="ball10" class="form_lable">Color ball 25 points:</label>
+							<input type="color" id="ball10" name="ball10" value="#e66465">
+						</div>
+						<div class="form-group">
+							<label for ="gametimer" class="form_lable">Time of game (default 60 sec):</label>
+							<input type="number" id="gametimer" name="gametimer" >
+						</div>
+						<div class="form-group">
+							<label for ="monsters" class="form_lable">Number of monsters (1-4):</label>
+							<input type="number" id="monsters" name="monsters" >
+						</div>
+						
+						<input type="button" id="startgamebtn" value="Submit" class="btn btn-primary">
+						<label id="usersettings" class="input_error">	</label>
+					</div>
+				</div>	
 			</div>
 		</div>
 	</body>

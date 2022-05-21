@@ -130,40 +130,117 @@ $(document).ready(function () {
                 dateError = true;
                 return false;
             }
-        }
+    }
           
-        var user_dict = {
-            "k": "k",
-            "a": "a",
-            "b": "b"
-          };
+    var user_dict = {
+        "k": "k",
+        "a": "a",
+        "b": "b"
+    };
 
     // Submit button
-        $('#submitbtn').click(function () {
-            if (validateUsername() && validatePassword()  && validateEmail1() && validateFullname() && validateDate()){
-                let passwordValue = $('#password').val();
-                let usernameValue = $('#usernames').val();
-                user_dict[usernameValue] = passwordValue;
-                menu_button_clicked(2);
-            }
-        });
+    $('#submitbtn').click(function () {
+        if (validateUsername() && validatePassword()  && validateEmail1() && validateFullname() && validateDate()){
+            let passwordValue = $('#password').val();
+            let usernameValue = $('#usernames').val();
+            user_dict[usernameValue] = passwordValue;
+            menu_button_clicked(2);
+        }
+    });
       
     // Login button
-        $('#loginbtn').click(function () {
-            let username = $('#loginuser').val();
-            let password = $('#loginpassword').val();
+    $('#loginbtn').click(function () {
+        let username = $('#loginuser').val();
+        let password = $('#loginpassword').val();
 
-            if (user_dict[username]==password){
-                $('#userpasscheck').hide();
-                $('#loginuser').val("");
-                $('#loginpassword').val("");
-                $('#userpasscheck').val("");
-                menu_button_clicked(4);
-            }
-            else{
-                $('#userpasscheck').show();
-                $('#userpasscheck').html("Wrong user name or password");
-            }
-        });
-
+        if (user_dict[username]==password){
+            $('#userpasscheck').hide();
+            $('#loginuser').val("");
+            $('#loginpassword').val("");
+            $('#userpasscheck').val("");
+            menu_button_clicked(5);
+            //menu_button_clicked(4);
+        }
+        else{
+            $('#userpasscheck').show();
+            $('#userpasscheck').html("Wrong user name or password");
+        }
     });
+
+
+/* 
+add from here
+*/
+    //RIGHT KEY
+    $("#rightkey").keyup(function () {
+        validRightKey();
+    });
+    function validRightKey(){
+        let val = $("#rightkey").val().toUpperCase();
+        var i = val.charCodeAt(0);
+        setKeyRight(i);
+    }
+    //LEFT KEY
+    $("#leftkey").keyup(function () {
+        validLeftKey();
+    });
+    function validLeftKey(){
+        let val = $("#leftkey").val().toUpperCase();
+        var i = val.charCodeAt(0);
+        setKeyLeft(i);
+    }
+    //UP KEY
+    $("#upkey").keyup(function () {
+        validUpKey();
+    });
+    function validUpKey(){
+        let val = $("#upkey").val().toUpperCase();
+        var i = val.charCodeAt(0);
+        setKeyUp(i);
+    }
+    //UP KEY
+    $("#downkey").keyup(function () {
+        validDownKey();
+    });
+    function validDownKey(){
+        let val = $("#downkey").val().toUpperCase();
+        var i = val.charCodeAt(0);
+        setKeyDown(i);
+    }
+    //NUMBER OF BALLS IN GAME
+    $("#ballsnumber").keyup(function () {
+        validBallsNumber();
+    });
+    function validBallsNumber(){
+        let num = $("#ballsnumber").val();
+        if (num >= 50 && num <= 90){
+            setBallsNumber(num);
+        }
+    }
+    //GAME TIMER
+    $("#gametimer").keyup(function () {
+        validTimer();
+    });
+    function validTimer(){
+        let time = $("#gametimer").val();
+        if (time >= 60){
+            setTimeGame(time);
+        }
+    }
+    //GAME TIMER
+    $("#monsters").keyup(function () {
+        validMonsters();
+    });
+    function validMonsters(){
+        let num = $("#monsters").val();
+        if (num >= 1 && num <= 4){
+            setMonsters(num);
+        }
+    }
+    // settings button
+    $('#startgamebtn').click(function (){
+        menu_button_clicked(4);
+    });
+
+
+});
