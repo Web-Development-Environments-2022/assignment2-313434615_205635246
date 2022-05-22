@@ -1,7 +1,7 @@
 html,
 body {
 	margin: 0;
-    background-color: blueviolet;
+    background-color: rgb(178, 133, 220);
 }
 
 .banner1 {
@@ -14,14 +14,14 @@ body {
     width: 100%;
     float: left;
     height: inherit /2 ;
-    background-color: red;
+    background-color: rgb(197, 67, 67);
 }
 
 .full_game {
     width: 100%;
     height: 600px;
     margin-top: 50px;
-    background-color: rgb(77, 234, 34);
+    background-color: rgb(197, 202, 195);
 }
 
 .full_game_text {
@@ -33,8 +33,6 @@ body {
 	color: #ffffff;
 	font-family: "Quicksand", sans-serif;
 }
-
-
 
 
 
@@ -108,4 +106,12 @@ body {
   }
   .form_input{
     display: table-cell;
+  }
+
+  .game_flex{
+    display: flex;
+  }
+
+  .flex1{
+    flex: 1;
   }

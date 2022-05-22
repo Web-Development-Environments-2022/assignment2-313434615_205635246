@@ -124,6 +124,10 @@
 					</div>					
 <!------------------------------------------------------------------------------------------------------------------------Game------------------------------------------->
 				<div class = "full_game" id = "full_game" hidden = true>
+					<div class="form-group"> <!-- need to be at the up and left in page -->
+						<label for ="user" class="form_lable">User name:   </label>
+						<label id = "useronlyname"></label>
+					</div>
 					<div id="score">
 						<label for="lblScore">SCORE:</label>
 						<input id="lblScore" type="text" />
@@ -132,8 +136,54 @@
 						<label for="lblTime">TIME:</label>							
 						<input id="lblTime" type="text" />
 					</div>
-					<div id="game">
-						<canvas id="canvas" height="600" width="600"></canvas>
+					<div id="game" class="game_flex">
+						<div class="flex1">
+							<canvas id="canvas" height="600" width="600"></canvas>
+						</div>
+						<div class="flex1">
+							<div class="container">
+								<div class="form-group">
+									<label for ="rightkey" class="form_lable">Right:   </label>
+									<label id = "rightdisplay"></label>
+								</div>
+								<div class="form-group">
+									<label for ="leftkey" class="form_lable">Left:   </label>
+									<label id = "leftdisplay"></label>
+								</div>
+								<div class="form-group">
+									<label for ="upkey" class="form_lable">Up:   </label>
+									<label id = "updisplay"></label>
+								</div>
+								<div class="form-group">
+									<label for ="downkey" class="form_lable">Down:   </label>
+									<label id = "downdisplay"></label>								
+								</div>
+								<div class="form-group">
+									<label for ="ballsnumber" class="form_lable">Number of balls:</label>
+									<label id = "ballsdisplay"></label>
+								</div>
+								<div class="form-group">
+									<label for ="ball60" class="form_lable">Color ball 5 points:</label>
+									<label type = color id = "color1display" value = "ball60"></label>
+								</div>
+								<div class="form-group">
+									<label for ="ball30" class="form_lable">Color ball 15 points:</label>
+									<label id = "color2display"></label>
+								</div>
+								<div class="form-group">
+									<label for ="ball10" class="form_lable">Color ball 25 points:</label>
+									<label id = "color3display"></label>
+								</div>
+								<div class="form-group">
+									<label for ="gametimer" class="form_lable">Time of game:</label>
+									<label id = "timeofgame"></label>
+								</div>
+								<div class="form-group">
+									<label for ="monsters" class="form_lable">Number of monsters:</label>
+									<label id = "monsterslbl"></label>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 <!------------------------------------------------------------------------------------------------------------------------Game------------------------------------------->
@@ -158,28 +208,34 @@
 						<div class="form-group">
 							<label for ="ballsnumber" class="form_lable">Number of balls between 50-90 (defualt 50):</label>
 							<input type="number" class="form_input" name="ballsnumber" id="ballsnumber" class="form-control">
+							<label id="ballsnumbercheck" class="input_error"></label>
 						</div>
 						<div class="form-group">
 							<label for ="ball60" class="form_lable">Color ball 5 points:</label>
-							<input type="color" id="ball60" name="ball60" value="#e66465">
+							<input type="color" id="ball60" name="ball60" value="#FF0000">
 						</div>
 						<div class="form-group">
 							<label for ="ball30" class="form_lable">Color ball 15 points:</label>
-							<input type="color" id="ball30" name="ball30" value="#e66465">
+							<input type="color" id="ball30" name="ball30" value="#00FF00">
 						</div>
 						<div class="form-group">
 							<label for ="ball10" class="form_lable">Color ball 25 points:</label>
-							<input type="color" id="ball10" name="ball10" value="#e66465">
+							<input type="color" id="ball10" name="ball10" value="#0000FF">
 						</div>
 						<div class="form-group">
 							<label for ="gametimer" class="form_lable">Time of game (default 60 sec):</label>
 							<input type="number" id="gametimer" name="gametimer" >
+							<label id="timercheck" class="input_error"></label>
 						</div>
 						<div class="form-group">
 							<label for ="monsters" class="form_lable">Number of monsters (1-4):</label>
 							<input type="number" id="monsters" name="monsters" >
+							<label id="monstercheck" class="input_error"></label>
 						</div>
-						
+
+						<input type="button" id="randomvaluesbtn" value="Random" class="btn btn-primary">
+						<label id="randomsettings" class="input_error">	</label>
+
 						<input type="button" id="startgamebtn" value="Submit" class="btn btn-primary">
 						<label id="usersettings" class="input_error">	</label>
 					</div>

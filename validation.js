@@ -100,36 +100,6 @@ $(document).ready(function () {
     
     function validateDate() {
         return true;
-            let dateValue = $('#date').val();
-            let dateValue1 = $('#date').val();
-
-            //var d = $('#date').datepicker('getDate');
-            //var d1 = $('#date').datepicker('getDate');
-            if  (dateValue.getDate() === dateValue1.getDate()){
-                $('#datecheck').hide();
-                dateError = false;
-                return true;
-            } else {
-                $('#datecheck').html("Invalid date");
-                $('#datecheck').show();
-                dateError = true;
-                return false;
-            }
-
-
-            //let regex =/^\d+$/;
-            let regex2 = /(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})/gi;
-            if(/*regex.test(dateValue) && */regex2.test(dateValue)){
-                $('#datecheck').hide();
-                dateError = false;
-                return true;
-            }
-            else{
-                $('#datecheck').html("Invalid date");
-                $('#datecheck').show();
-                dateError = true;
-                return false;
-            }
     }
           
     var user_dict = {
@@ -158,89 +128,191 @@ $(document).ready(function () {
             $('#loginuser').val("");
             $('#loginpassword').val("");
             $('#userpasscheck').val("");
+            $('#useronlyname').html(username);//here
             menu_button_clicked(5);
-            //menu_button_clicked(4);
         }
         else{
             $('#userpasscheck').show();
             $('#userpasscheck').html("Wrong user name or password");
         }
     });
-
-
-/* 
-add from here
-*/
+/*****************add from here ******************/
     //RIGHT KEY
+    $('#rightdisplay').html('right arrow');//here
     $("#rightkey").keyup(function () {
         validRightKey();
     });
     function validRightKey(){
         let val = $("#rightkey").val().toUpperCase();
+        $('#rightdisplay').html(val);//here
         var i = val.charCodeAt(0);
         setKeyRight(i);
     }
     //LEFT KEY
+    $('#leftdisplay').html('left arrow');//here
     $("#leftkey").keyup(function () {
         validLeftKey();
     });
     function validLeftKey(){
         let val = $("#leftkey").val().toUpperCase();
+        $('#leftdisplay').html(val);//here
         var i = val.charCodeAt(0);
         setKeyLeft(i);
     }
     //UP KEY
+    $('#updisplay').html('up arrow');//here
     $("#upkey").keyup(function () {
         validUpKey();
     });
     function validUpKey(){
         let val = $("#upkey").val().toUpperCase();
+        $('#updisplay').html(val); //here
         var i = val.charCodeAt(0);
         setKeyUp(i);
     }
-    //UP KEY
+    //DOWN KEY
+    $('#downdisplay').html('down arrow');//here
     $("#downkey").keyup(function () {
         validDownKey();
     });
     function validDownKey(){
         let val = $("#downkey").val().toUpperCase();
+        $('#downdisplay').html(val); //here
         var i = val.charCodeAt(0);
         setKeyDown(i);
     }
+
     //NUMBER OF BALLS IN GAME
+    $('#ballsdisplay').html('50');//here
+    $('#ballsnumbercheck').hide();
+    let ballerror = true;
     $("#ballsnumber").keyup(function () {
         validBallsNumber();
     });
     function validBallsNumber(){
         let num = $("#ballsnumber").val();
         if (num >= 50 && num <= 90){
+            $('#ballsnumbercheck').hide();
+            ballerror = false;
+            $('#ballsdisplay').html(num);//here
             setBallsNumber(num);
+            return true;
         }
+        $('#ballsnumbercheck').show();
+        $('#ballsnumbercheck').html("Insert number in range [50 - 90]");
+        ballerror = true;
+        return false;
     }
+    //BALLS COLORS          need to complete.//////////////
+    $('#color1display').html('red (problem)');//here
+    $("#ball60").keyup(function () {
+        color1func();
+    });
+    function color1func(){
+        let color = $("#ball60").val().toString(16);
+        $('#color1display').html(color);//here////////////
+        setBall60(color);
+        return true;
+    }
+
+    $('#color2display').html('green (problem)');//here//////////
+    $("#ball30").keyup(function () {
+        color2func();
+    });
+    function color2func(){
+        let color = $("#ball30").val().toString(16);
+        $('#color2display').html(color);//here
+        setBall30(color);
+        return true; 
+    }
+    $('#color3display').html('blue (problem)');//here
+    $("#ball10").keyup(function () {
+        color3func();
+    });
+    function color3func(){
+        let color = $("#ball10").val();
+        $('#color3display').html(color);//here
+        setBall10(color);
+        return true;
+    }
+
     //GAME TIMER
+    $('#timeofgame').html('60');//here
+    $('#timercheck').hide();    
+    let timererror = true;
     $("#gametimer").keyup(function () {
         validTimer();
     });
     function validTimer(){
         let time = $("#gametimer").val();
-        if (time >= 60){
+        if (time >= 60 && time <= 600){
+            $('#timeofgame').html(time);//here
+            $('#timercheck').hide();   
+            timererror = false;
             setTimeGame(time);
+            return true;
         }
+        $('#timercheck').show();
+        $('#timercheck').html("Insert number (seconds) in range [60 - 600]");
+        timererror = true;
+        return false;
     }
-    //GAME TIMER
+
+    //MONSTERS
+    $('#monsterslbl').html('1');//here
+    $('#monstercheck').hide(); 
+    let mosterserror = true;
     $("#monsters").keyup(function () {
         validMonsters();
     });
     function validMonsters(){
         let num = $("#monsters").val();
         if (num >= 1 && num <= 4){
+            $('#monsterslbl').html(num);//here
+            $('#monstercheck').hide();
+            mosterserror = false;
             setMonsters(num);
-        }
+            return true;
+    }
+        $('#monstercheck').show();
+        $('#monstercheck').html("Insert number in range [1 - 4]");
+        mosterserror = true;
+        return false;
+    }
+
+    // random settings button
+    $('#randomvaluesbtn').click(function (){
+        setRandomSettingValues();
+    });
+
+    function setRandomSettingValues(){
+        let x = Math.floor(Math.random() * 41) + 50;
+        setBallsNumber(x);
+        $("#ballsnumber").val(x);
+        validBallsNumber();
+        let t = Math.floor(Math.random() * 541) + 60;
+        setTimeGame(t);
+        $("#gametimer").val(t);
+        validTimer();
+        let m = Math.floor(Math.random() * 4) + 1;
+        setMonsters(m);
+        $("#monsters").val(m);
+        validMonsters();
+        let c = Math.floor(Math.random()*16777215).toString(16);
+        $("#ball60").val('#'+c);
+        color1func();
+        c = Math.floor(Math.random()*16777215).toString(16);
+        $("#ball30").val('#'+c);
+        color2func();
+        c = Math.floor(Math.random()*16777215).toString(16);
+        $("#ball10").val('#'+c);
+        color3func();
     }
     // settings button
     $('#startgamebtn').click(function (){
-        menu_button_clicked(4);
+        if ( validBallsNumber() && color1func() && color2func() && color3func() && validTimer() && validMonsters()){
+            menu_button_clicked(4);
+        }
     });
-
 
 });

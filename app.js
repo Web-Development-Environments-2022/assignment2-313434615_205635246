@@ -34,6 +34,7 @@ function Start() {
 				board[i][j] = 4;
 			} else {
 				var randomNum = Math.random();
+				//pizur kadurim
 				if (randomNum <= (1.0 * food_remain) / cnt) {
 					food_remain--;
 					board[i][j] = 1;
@@ -86,11 +87,15 @@ let right_key = 39;
 let up_key = 38;
 let down_key = 40;
 let left_key = 37;
-let number_of_balls = 50;
+
+let number_of_balls ='';
+let ball5_color = "#FF0000";
+let ball15_color = "#00FF00";
+let ball25_color = "#0000FF";
 let ball5 = 30;
 let ball15 = 15;
 let ball25 = 5;
-let timer = 60
+let timer = 60;
 let num_of_monsters = 1;
 
 function setKeyRight(val){
@@ -115,6 +120,15 @@ function setBallsPercentage(n){
 	ball25 = n * 0.1 - (n * 0.1 % 1);
 	var x = n - (ball5 + ball15 + ball25);
 	ball5 += x;
+}
+function setBall60(c){
+	ball5_color = c;
+}
+function setBall30(c){
+	ball15_color = c;
+}
+function setBall10(c){
+	ball25_color = c;
 }
 //sets the time game
 function setTimeGame(t){
@@ -235,6 +249,7 @@ function UpdatePosition() {
 		}
 	}
 	if (board[shape.i][shape.j] == 1) {
+		//
 		score++;
 	}
 	board[shape.i][shape.j] = 2;
