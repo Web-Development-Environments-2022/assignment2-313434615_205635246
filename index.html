@@ -4,10 +4,12 @@
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
 		<script type="text/javascript" src="./validation.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 		<link rel="stylesheet" type="text/css" href="decoration.css" />
 		<link rel="shortcut icon" href="./resources/logo_ms_packman.jpg">
 	</head>
-
 	<body>
 		<div class="banner1" layout = "row">
 			<img src="./resources/logo_ms_packman.jpg" width = 20% height= 100px/>
@@ -26,8 +28,7 @@
 					</div>
 					<div class="banner__text"> | </div>
 					<div class="banner__text">
-						<input type=button class = "banner_button" style="text-decoration:none" onclick="menu_button_clicked(3)" value="About"/>
-					</div>
+						<input type=button class = "banner_button" style="text-decoration:none" onclick="$('#aboutmodal').modal()" value="About"/>					</div>
 				</div>
 			</div>
 <!---------------------------welcome------------------------------------------->
@@ -101,44 +102,32 @@
 <!--------------------------------------About------------------------------------------->
 				<div class = "mainscreen" id = "about" hidden = true>
 					<!-- Trigger the modal with a button -->
-					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-					
-						<div id="myModal" class="modal fade" role="dialog">
-							<div class="modal-dialog">
-								<div class="container">
-									<div class="form-group">
-		  								<button type="button" class="close" data-dismiss="modal">&times;</button>
-		  								<h4 class="modal-title">Assignment 2 : Pac-man game</h4>
-									</div>
-									<div class="form-group">
-		  								<p><u>Game developers :</u></p>
-										<p>Shahar Weisberger, id : 313434615</p>
-		  								<p>Gal Alon, id : 205635246</p>
-									</div>
-									<div class="form-group">
-										<p><u>The way we use :</u></p>
-										<p>jQuery Plugin : xxxxxxxxxxxxxxxxxxx</p>
-										<p>Templete : yyyyyyyyyyyyyyyyyyyyyyyy</p>
-									</div>
-									<div class="form-group">
-										<p><u>Struggles we had: </u></p>
-										<p>Are mainly struggle was to Understand the connection between the javascript, html and css. </p>
-										<p>Also, it took time to benefit from the language strong capabilities. </p>
-										<p>In the end it doesnt realy matters :)</p>
-										<p>beacause it was a fun learning environment to work on.</p>
-										<p>Enjoy the game we made for you, it wasn't easy...</p>
-										<p>Have a good day.</p>
-									</div>
-
-
-									<div class="form-group">
-		  								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									</div>
-	  							</div>
-  
+					<!-- Modal HTML embedded directly into document -->
+					<div id="aboutmodal" class="modal">
+						<div class="container">
+							<div class="form-group">
+								  <h4 class="modal-title">Assignment 2 : Pac-man game</h4>
 							</div>
-  						</div>
-					
+							<div class="form-group">
+								  <p><u>Game developers :</u></p>
+								<p>Shahar Weisberger, id : 313434615</p>
+								  <p>Gal Alon, id : 205635246</p>
+							</div>
+							<div class="form-group">
+								<p>The way we use jQuery Plugin : xxxxxxxxxxxxxxxxxxx</p>
+							</div>
+							<div class="form-group">
+								<p><u>Struggles we had: </u></p>
+								<p>Are mainly struggle was to Understand the connection between the javascript, html and css. </p>
+								<p>Also, it took time to benefit from the language strong capabilities. </p>
+								<p>In the end it doesnt realy matters :)</p>
+								<p>beacause it was a fun learning environment to work on.</p>
+								<p>Enjoy the game we made for you, it wasn't easy...</p>
+								<p>Have a good day.</p>
+							</div>
+						  </div>
+						<a href="#" rel="modal:close">Close</a>
+  					</div>					
 				</div>	
 					
 <!--------------------------------------Game------------------------------------------->

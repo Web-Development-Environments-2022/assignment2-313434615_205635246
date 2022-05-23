@@ -35,11 +35,11 @@ div_array = ["#welcome", "#register","#login","#about","#full_game", "#game_sett
 function menu_button_clicked(x) {
 	let i = 0;
 	div_array.forEach(div => {i++==x ? $(div).show() : $(div).hide();});
+	if(x != 3 ){
+		stopGame();
+	}
 	if (x==4){
 		StartGame();
-	}
-	else if(x != 3 ){
-		stopGame();
 	}
 }
 
