@@ -324,4 +324,9 @@ $(document).ready(function () {
         }
     });
 
+    //restart game button
+    $('#restartgamebtn').click(function (){
+        menu_button_clicked(4);
+    });
+
 });
