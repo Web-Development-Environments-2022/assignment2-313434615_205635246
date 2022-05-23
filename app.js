@@ -6,6 +6,7 @@ var pac_color;
 var start_time;
 var time_elapsed;
 var interval;
+var eatenCells;
 
 let right_key = 39;
 let up_key = 38;
@@ -76,6 +77,7 @@ function StartGame() {
 	var array = createSuffleArray(ball5, ball15, ball25);
 	//22.5.2022
 	var ball_counter = 0;
+	eatenCells = [];
 	for (var i = 0; i < 10; i++) {
 		board[i] = new Array();
 		//put obstacles in (i=3,j=3) and (i=3,j=4) and (i=3,j=5), (i=6,j=1) and (i=6,j=2)
@@ -133,6 +135,7 @@ function StartGame() {
 	);
 	initialMonsters(num_of_monsters);
 	initialBonusPoints();
+	initialFadingBonus();
 	interval = setInterval(UpdatePosition, 250);
 }
 
@@ -313,12 +316,14 @@ function Draw(direction) {
 	moveBunusPoints();
 	drawMonsters(context);
 	drawBonusPoints(context);
+	drawFadingBonus(context);
 }
 
 var lastPressed = 4
 function UpdatePosition() {
 	board[shape.i][shape.j] = 0;
 	checkBonusPoints(shape.i, shape.j);
+	checkFadingBonus(shape.i, shape.j);
 	if (checkMonsters(shape.i, shape.j)){
 		lblScore.value = score;
 		stopGame();
@@ -351,6 +356,7 @@ function UpdatePosition() {
 	}
 	if (board[shape.i][shape.j] == 100 || board[shape.i][shape.j] == 101 || board[shape.i][shape.j] == 102) {
 		score += ball_dict[board[shape.i][shape.j]].points;
+		updateEaten(shape.i,shape.j);
 		counter_of_falling_balls++;
 	}
 	board[shape.i][shape.j] = 2;
@@ -537,5 +543,63 @@ function initialMonsters(num){
 		if (bonus.active && bonus.currentX==x && bonus.currentY == y){
 			bonus.active = false;
 			score += bonus.points;
+		}
+	}
+
+	class FadingBonus {
+		constructor(){
+			this.active = false;
+		}
+		update (startX, startY, radious, fadingTime, points) {
+		  this.currentX = startX;
+		  this.currentY = startY;
+		  this.points = points;
+		  this.radious = radious;
+		  this.tickCounter = 0;
+		  this.active = true;
+		  this.ticksBeforFade = refreshRate * fadingTime;
+		}
+	}
+
+	var fadingBonus;
+
+	function initialFadingBonus(){
+		fadingBonus = new FadingBonus();
+		//fadingBonus = new FadingBonus( 6, 6, 20, 5, 50)
+	}
+
+	function drawFadingBonus(context){
+		if (fadingBonus.active){
+			context.beginPath();
+			var x = fadingBonus.currentX*60+30;
+			var y = fadingBonus.currentY*60+30;
+			context.arc(x, y, fadingBonus.radious, 0, 2 * Math.PI); // circle
+			fadingBonus.radious-=0.5;
+			context.fillStyle = "red"; //color
+			context.fill();
+			context.fillStyle = "black";
+			context.fillText(''+fadingBonus.points, x-3, y+3, 20)
+			if (fadingBonus.radious<10){
+				fadingBonus.active = false;
+			}
+		}
+	}
+
+	function updateEaten(x,y){
+		var o = new Object();
+		o.x = x;
+		o.y = y;
+		eatenCells.push(o);
+		if (eatenCells.length%5 ==0 && !fadingBonus.active){
+			var inx =  Math.floor(Math.random() * eatenCells.length);
+			fadingBonus.update(eatenCells[inx].x, eatenCells[inx].y, 20, 5, 50)
+			eatenCells.splice(inx,1);
+		}
+	}
+
+	function checkFadingBonus(x, y){
+		if (fadingBonus.active && fadingBonus.currentX==x && fadingBonus.currentY == y){
+			fadingBonus.active = false;
+			score += fadingBonus.points;
 		}
 	}
