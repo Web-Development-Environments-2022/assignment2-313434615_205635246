@@ -203,35 +203,37 @@ $(document).ready(function () {
         ballerror = true;
         return false;
     }
-    //BALLS COLORS          need to complete.//////////////
-    $('#color1display').html('red (problem)');//here
+    //BALLS COLORS
     $("#ball60").keyup(function () {
         color1func();
     });
     function color1func(){
-        let color = $("#ball60").val().toString(16);
-        $('#color1display').html(color);//here////////////
+        let color = $("#ball60").val();
+        $('#color1display').html(''+color);
+        $('#color1display').show();
+        //here////////////
         setBall60(color);
         return true;
     }
-
-    $('#color2display').html('green (problem)');//here//////////
     $("#ball30").keyup(function () {
         color2func();
     });
     function color2func(){
-        let color = $("#ball30").val().toString(16);
-        $('#color2display').html(color);//here
+        let color = $("#ball30").val();
+        $('#color2display').html(''+color);
+        $('#color2display').show();
+        //here////////////
         setBall30(color);
-        return true; 
+        return true;
     }
-    $('#color3display').html('blue (problem)');//here
     $("#ball10").keyup(function () {
         color3func();
     });
     function color3func(){
         let color = $("#ball10").val();
-        $('#color3display').html(color);//here
+        $('#color3display').html(''+color);
+        $('#color3display').show();
+        //here////////////
         setBall10(color);
         return true;
     }
@@ -279,6 +281,13 @@ $(document).ready(function () {
         mosterserror = true;
         return false;
     }
+    //////life
+    $("#life1").keyup(function () {
+        let num = $("#life1").val();
+        $('#lifelbl').html(num);//here
+        $('#lifelbl').show();
+        setLife(num);
+    });
 
     // random settings button
     $('#randomvaluesbtn').click(function (){
@@ -287,15 +296,15 @@ $(document).ready(function () {
 
     function setRandomSettingValues(){
         let x = Math.floor(Math.random() * 41) + 50;
-        setBallsNumber(x);
+        //setBallsNumber(x);
         $("#ballsnumber").val(x);
         validBallsNumber();
         let t = Math.floor(Math.random() * 541) + 60;
-        setTimeGame(t);
+        //setTimeGame(t);
         $("#gametimer").val(t);
         validTimer();
         let m = Math.floor(Math.random() * 4) + 1;
-        setMonsters(m);
+        //setMonsters(m);
         $("#monsters").val(m);
         validMonsters();
         let c = Math.floor(Math.random()*16777215).toString(16);
@@ -310,7 +319,7 @@ $(document).ready(function () {
     }
     // settings button
     $('#startgamebtn').click(function (){
-        if ( validBallsNumber() && color1func() && color2func() && color3func() && validTimer() && validMonsters()){
+        if ( !ballerror && !timererror && !mosterserror){
             menu_button_clicked(4);
         }
     });

@@ -18,6 +18,9 @@
 				for (let i = 0; i < 6 ; i++) {
 					div_array[i].hidden = (i!=x);
 				}
+				if (x==4){
+					StartGame();
+				}
 			}
 		</SCRIPT>
 		<link rel="stylesheet" type="text/css" href="decoration.css" />
@@ -45,7 +48,7 @@
 						<input type=button class = "banner_button" style="text-decoration:none" onclick="menu_button_clicked(3)" value="About"/>
 					</div>
 				</div>
-<!------------------------------------------------------------------------------------------------------------------------welcome------------------------------------------->
+<!---------------------------welcome------------------------------------------->
 				<div class = "full_game" id = "welcome">
 					<P ID="pText"> this is packman! </P>
 					<img src="./resources/logo_ms_packman.jpg" width = 30% height= 200px/>
@@ -56,7 +59,7 @@
 						</td></tr>
 					</table>
 				</div>
-<!------------------------------------------------------------------------------------------------------------------------register------------------------------------------->
+<!---------------------------register------------------------------------------->
 				<div class = "full_game" id = "register" hidden = true>					
 					<h1 class="text-center text-success">
 						Register for free 
@@ -98,7 +101,7 @@
 					<!--  Including validation.js jQuery Script -->
 					<script src="validation.js"></script>
 				</div>
-<!------------------------------------------------------------------------------------------------------------------------Login------------------------------------------->
+<!-------------------------------------Login------------------------------------------->
 				<div class = "full_game" id = "login" hidden = true>
 					<h1 class="text-center text-success">
 						Login to start 
@@ -116,26 +119,35 @@
 						<label id="userpasscheck" class="input_error">	</label>
 					</div>
 				</div>
-<!------------------------------------------------------------------------------------------------------------------------About------------------------------------------->
+<!--------------------------------------About------------------------------------------->
 					<div class = "full_game" id = "about" hidden = true>
 						<h1 class="text-center text-success">
 							About
 						</h1>
 					</div>					
-<!------------------------------------------------------------------------------------------------------------------------Game------------------------------------------->
+<!--------------------------------------Game------------------------------------------->
 				<div class = "full_game" id = "full_game" hidden = true>
-					<div class="form-group"> <!-- need to be at the up and left in page -->
-						<label for ="user" class="form_lable">User name:   </label>
-						<label id = "useronlyname"></label>
+					<div class="container">
+						<label id = "happy" > :) </label>
 					</div>
-					<div id="score">
+					<div class="form-group">
+						<label for ="user" >User name: </label>
+						<label id = "useronlyname" ></label>
+					</div>
+					<div id="score" >
 						<label for="lblScore">SCORE:</label>
-						<input id="lblScore" type="text" />
+						<input id="lblScore" type="text" value = "5"/>
 					</div>
 					<div id="time">
 						<label for="lblTime">TIME:</label>							
 						<input id="lblTime" type="text" />
 					</div>
+
+					<div id="life">
+						<label for="life1">LIFE:</label>
+						<input id = "lifelbl" type = "text" />
+					</div>
+
 					<div id="game" class="game_flex">
 						<div class="flex1">
 							<canvas id="canvas" height="600" width="600"></canvas>
@@ -164,15 +176,15 @@
 								</div>
 								<div class="form-group">
 									<label for ="ball60" class="form_lable">Color ball 5 points:</label>
-									<label type = color id = "color1display" value = "ball60"></label>
+									<input type="color" id = "color1display" disabled/> </label><!--type="color"-->
 								</div>
 								<div class="form-group">
 									<label for ="ball30" class="form_lable">Color ball 15 points:</label>
-									<label id = "color2display"></label>
+									<input type="color" id = "color2display" disabled  /><br>
 								</div>
 								<div class="form-group">
 									<label for ="ball10" class="form_lable">Color ball 25 points:</label>
-									<label id = "color3display"></label>
+									<input type="color" id = "color3display" disabled  /><br>
 								</div>
 								<div class="form-group">
 									<label for ="gametimer" class="form_lable">Time of game:</label>
@@ -186,7 +198,7 @@
 						</div>
 					</div>
 				</div>
-<!------------------------------------------------------------------------------------------------------------------------Game------------------------------------------->
+<!-------------------------------Game------------------------------------------->
 				<div class = "full_game" id = "game_setting" hidden = true>
 					<div class="container">
 						<div class="form-group">
