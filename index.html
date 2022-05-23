@@ -4,25 +4,6 @@
 		<script src="./jquery-3.4.1.slim.min.js"></script>
 		<script type="text/javascript" src="./app.js"></script>
 		<script type="text/javascript" src="./validation.js"></script>
-
-		<SCRIPT LANGUAGE="JavaScript">
-			function menu_button_clicked(x) {
-				div_array = new Array()
-				div_array[0] = document.getElementById("welcome")
-				div_array[1] = document.getElementById("register")
-				div_array[2] = document.getElementById("login")
-				div_array[3] = document.getElementById("about")
-				div_array[4] = document.getElementById("full_game")
-				div_array[5] = document.getElementById("game_setting")
-
-				for (let i = 0; i < 6 ; i++) {
-					div_array[i].hidden = (i!=x);
-				}
-				if (x==4){
-					StartGame();
-				}
-			}
-		</SCRIPT>
 		<link rel="stylesheet" type="text/css" href="decoration.css" />
 		<link rel="shortcut icon" href="./resources/logo_ms_packman.jpg">
 	</head>
@@ -48,65 +29,63 @@
 						<input type=button class = "banner_button" style="text-decoration:none" onclick="menu_button_clicked(3)" value="About"/>
 					</div>
 				</div>
+			</div>
 <!---------------------------welcome------------------------------------------->
-				<div class = "full_game" id = "welcome">
-					<P ID="pText"> this is packman! </P>
-					<img src="./resources/logo_ms_packman.jpg" width = 30% height= 200px/>
-					<table>
-						<tr><td>
-							<input type=button class = "big_button" style="text-decoration:none" onclick="menu_button_clicked(1)" value=" Register here "/>					
-							<input type=button class = "big_button" style="text-decoration:none" onclick="menu_button_clicked(2)" value=" Login here "/>
-						</td></tr>
-					</table>
+				<div class = "mainscreen" id = "welcome">
+					<div class="container">
+						<div class="form-group">
+							<h1> this is pac-man! </h1>
+						</div>
+						<div class="form-group">
+							<img src="./resources/logo_ms_packman.jpg" width = 100% height= 200px/>						
+						</div>
+						<input type=button class = "big_button" style="text-decoration:none" onclick="menu_button_clicked(1)" value=" Register here "/>					
+						<input type=button class = "big_button" style="text-decoration:none" onclick="menu_button_clicked(2)" value=" Login here "/>						
+					</div>
 				</div>
 <!---------------------------register------------------------------------------->
-				<div class = "full_game" id = "register" hidden = true>					
-					<h1 class="text-center text-success">
-						Register for free 
-					</h1>
-					<p class="text-center">
-					  Please enter your personal details
-					</p>
+				<div class = "mainscreen" id = "register" hidden = true>					
 					<div class="container">
-					<!--	<form> -->
-							<div class="form-group">
-								<label for ="user" class="form_lable">User name:   </label>
-								<input type="text" class="form_input" name="username" id="usernames" class="form-control">
-								<label id="usercheck" class="input_error" ></label>
-							</div>
-							<div class="form-group">
-								<label for="password" class="form_lable">Password:    </label>
-								<input type="password" class="form_input" name="pass" id="password" class="form-control">
-								<label id="passcheck" class="input_error">	</label>
-							</div>
-
-							<div class="form-group">
-								<label for="full_name" class="form_lable">Full name:   </label>
-								<input type="text" class="form_input" name="fullname" id="fullnames" class="form-control">
-								<h5 id="fullnamecheck" class="input_error"></h5>
-							</div>
-							<div class="form-group">
-								<label for="user" class="form_lable">Email:       </label>
-								<input type="email" class="form_input" name="email" id="email" required class="form-control">
-								<label id="emailcheck" class="input_error"></label>										
-							</div>
-							<div class="form-group">
-								<label for="user" class="form_lable">Date of birdate:</label>
-								<input type="date" class="form_input" name="date" id="date" required class="form-control">
-								<label id="datecheck" class="input_error"></label>										
-							</div>
-							<input type="button" id="submitbtn" value="Submit" class="btn btn-primary">
-						<!--</form>-->
+						<div class="form-group">
+							<h1 class="text-center text-success">Register for free </h1>
+						</div>
+						<div class="form-group">
+							<p class="text-center"> Please enter your personal details</p>
+						</div>
+						<div class="form-group">
+							<label for ="user" class="form_lable">User name:   </label>
+							<input type="text" class="form_input" name="username" id="usernames" class="form-control">
+							<label id="usercheck" class="input_error" ></label>
+						</div>
+						<div class="form-group">
+							<label for="password" class="form_lable">Password:    </label>
+							<input type="password" class="form_input" name="pass" id="password" class="form-control">
+							<label id="passcheck" class="input_error">	</label>
+						</div>
+						<div class="form-group">
+							<label for="full_name" class="form_lable">Full name:   </label>
+							<input type="text" class="form_input" name="fullname" id="fullnames" class="form-control">
+							<h5 id="fullnamecheck" class="input_error"></h5>
+						</div>
+						<div class="form-group">
+							<label for="user" class="form_lable">Email:       </label>
+							<input type="email" class="form_input" name="email" id="email" required class="form-control">
+							<label id="emailcheck" class="input_error"></label>										
+						</div>
+						<div class="form-group">
+							<label for="user" class="form_lable">Date of birdate:</label>
+							<input type="date" class="form_input" name="date" id="date" required class="form-control">
+							<label id="datecheck" class="input_error"></label>										
+						</div>
+						<input type="button" id="submitbtn" value="Submit" class="btn btn-primary">
 					</div>
-					<!--  Including validation.js jQuery Script -->
-					<script src="validation.js"></script>
 				</div>
 <!-------------------------------------Login------------------------------------------->
-				<div class = "full_game" id = "login" hidden = true>
-					<h1 class="text-center text-success">
-						Login to start 
-					</h1>
+				<div class = "mainscreen" id = "login" hidden = true>
 					<div class="container">
+						<div class="form-group">
+							<h1 class="text-center text-success">Login to start </h1>
+						</div>
 						<div class="form-group">
 							<label for ="user" class="form_lable">User name:   </label>
 							<input type="text" class="form_input" name="username" id="loginuser" class="form-control">
@@ -120,86 +99,118 @@
 					</div>
 				</div>
 <!--------------------------------------About------------------------------------------->
-					<div class = "full_game" id = "about" hidden = true>
-						<h1 class="text-center text-success">
-							About
-						</h1>
-					</div>					
+				<div class = "mainscreen" id = "about" hidden = true>
+					<!-- Trigger the modal with a button -->
+					<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+					
+						<div id="myModal" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+								<div class="container">
+									<div class="form-group">
+		  								<button type="button" class="close" data-dismiss="modal">&times;</button>
+		  								<h4 class="modal-title">Assignment 2 : Pac-man game</h4>
+									</div>
+									<div class="form-group">
+		  								<p><u>Game developers :</u></p>
+										<p>Shahar Weisberger, id : 313434615</p>
+		  								<p>Gal Alon, id : 205635246</p>
+									</div>
+									<div class="form-group">
+										<p><u>The way we use :</u></p>
+										<p>jQuery Plugin : xxxxxxxxxxxxxxxxxxx</p>
+										<p>Templete : yyyyyyyyyyyyyyyyyyyyyyyy</p>
+									</div>
+									<div class="form-group">
+										<p><u>Struggles we had: </u></p>
+										<p>Are mainly struggle was to Understand the connection between the javascript, html and css. </p>
+										<p>Also, it took time to benefit from the language strong capabilities. </p>
+										<p>In the end it doesnt realy matters :)</p>
+										<p>beacause it was a fun learning environment to work on.</p>
+										<p>Enjoy the game we made for you, it wasn't easy...</p>
+										<p>Have a good day.</p>
+									</div>
+
+
+									<div class="form-group">
+		  								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+	  							</div>
+  
+							</div>
+  						</div>
+					
+				</div>	
+					
 <!--------------------------------------Game------------------------------------------->
-				<div class = "full_game" id = "full_game" hidden = true>
+				<div class = "mainscreen" id = "full_game" hidden = true>
 					<div class="container">
-						<label id = "happy" > :) </label>
-					</div>
-					<div class="form-group">
-						<label for ="user" >User name: </label>
-						<label id = "useronlyname" ></label>
-					</div>
-					<div id="score" >
-						<label for="lblScore">SCORE:</label>
-						<input id="lblScore" type="text" value = "5"/>
-					</div>
-					<div id="time">
-						<label for="lblTime">TIME:</label>							
-						<input id="lblTime" type="text" />
-					</div>
-
-					<div id="life">
-						<label for="life1">LIFE:</label>
-						<input id = "lifelbl" type = "text" />
-					</div>
-
-					<div id="game" class="game_flex">
-						<div class="flex1">
-							<canvas id="canvas" height="600" width="600"></canvas>
+						<div class="form-group">
+							<label for ="user" ><u>User name</u> : </label>
+							<label id = "useronlyname" ></label>
 						</div>
-						<div class="flex1">
-							<div class="container">
-								<div class="form-group">
-									<label for ="rightkey" class="form_lable">Right:   </label>
-									<label id = "rightdisplay"></label>
-								</div>
-								<div class="form-group">
-									<label for ="leftkey" class="form_lable">Left:   </label>
-									<label id = "leftdisplay"></label>
-								</div>
-								<div class="form-group">
-									<label for ="upkey" class="form_lable">Up:   </label>
-									<label id = "updisplay"></label>
-								</div>
-								<div class="form-group">
-									<label for ="downkey" class="form_lable">Down:   </label>
-									<label id = "downdisplay"></label>								
-								</div>
-								<div class="form-group">
-									<label for ="ballsnumber" class="form_lable">Number of balls:</label>
-									<label id = "ballsdisplay"></label>
-								</div>
-								<div class="form-group">
-									<label for ="ball60" class="form_lable">Color ball 5 points:</label>
-									<input type="color" id = "color1display" disabled/> </label><!--type="color"-->
-								</div>
-								<div class="form-group">
-									<label for ="ball30" class="form_lable">Color ball 15 points:</label>
-									<input type="color" id = "color2display" disabled  /><br>
-								</div>
-								<div class="form-group">
-									<label for ="ball10" class="form_lable">Color ball 25 points:</label>
-									<input type="color" id = "color3display" disabled  /><br>
-								</div>
-								<div class="form-group">
-									<label for ="gametimer" class="form_lable">Time of game:</label>
-									<label id = "timeofgame"></label>
-								</div>
-								<div class="form-group">
-									<label for ="monsters" class="form_lable">Number of monsters:</label>
-									<label id = "monsterslbl"></label>
+						<div class="form-group">
+							<label for="lblScore">SCORE: </label>
+							<input id="lblScore" type="text" size="2" disabled/>
+							<label for="lblTime">   TIME: </label>							
+							<input id="lblTime" type="text" size="2" disabled/>
+							<label for="life1">   LIFE: </label>
+							<input id = "lifelbl" type = "text" size="2" disabled/>
+						</div>
+
+						<div id="game" class="game_flex">
+							<div class="flex1">
+								<canvas id="canvas" height="600" width="600"></canvas>
+							</div>
+							<div class="flex1">
+								<div class="container">
+									<div class="form-group">
+										<label for ="rightkey" class="form_lable">Right:   </label>
+										<label id = "rightdisplay"></label>
+									</div>
+									<div class="form-group">
+										<label for ="leftkey" class="form_lable">Left:   </label>
+										<label id = "leftdisplay"></label>
+									</div>
+									<div class="form-group">
+										<label for ="upkey" class="form_lable">Up:   </label>
+										<label id = "updisplay"></label>
+									</div>
+									<div class="form-group">
+										<label for ="downkey" class="form_lable">Down:   </label>
+										<label id = "downdisplay"></label>								
+									</div>
+									<div class="form-group">
+										<label for ="ballsnumber" class="form_lable">Number of balls:</label>
+										<label id = "ballsdisplay"></label>
+									</div>
+									<div class="form-group">
+										<label for ="ball60" class="form_lable">Color ball 5 points:</label>
+										<input type="color" id = "color1display" disabled/> </label><!--type="color"-->
+									</div>
+									<div class="form-group">
+										<label for ="ball30" class="form_lable">Color ball 15 points:</label>
+										<input type="color" id = "color2display" disabled  /><br>
+									</div>
+									<div class="form-group">
+										<label for ="ball10" class="form_lable">Color ball 25 points:</label>
+										<input type="color" id = "color3display" disabled  /><br>
+									</div>
+									<div class="form-group">
+										<label for ="gametimer" class="form_lable">Time of game:</label>
+										<label id = "timeofgame"></label>
+									</div>
+									<div class="form-group">
+										<label for ="monsters" class="form_lable">Number of monsters:</label>
+										<label id = "monsterslbl"></label>
+									</div>
+									<input type="button" id="restartgamebtn" value="Start new game" class="big_button">
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 <!-------------------------------Game------------------------------------------->
-				<div class = "full_game" id = "game_setting" hidden = true>
+				<div class = "mainscreen" id = "game_setting" hidden = true>
 					<div class="container">
 						<div class="form-group">
 							<label for ="rightkey" class="form_lable">Right:   </label>
@@ -245,14 +256,10 @@
 							<label id="monstercheck" class="input_error"></label>
 						</div>
 
-						<input type="button" id="randomvaluesbtn" value="Random" class="btn btn-primary">
-						<label id="randomsettings" class="input_error">	</label>
-
+						<input type="button" id="randomvaluesbtn" value="Random" >
 						<input type="button" id="startgamebtn" value="Submit" class="btn btn-primary">
-						<label id="usersettings" class="input_error">	</label>
 					</div>
 				</div>	
-			</div>
-		</div>
+		</div>	
 	</body>
 </html>
