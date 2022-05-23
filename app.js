@@ -60,10 +60,9 @@ function createSuffleArray( b1, b2, b3){
 
 }
 
-
 var audio = new Audio('./resources/music_sound.mp3');//music now
-
 function StartGame() {
+	counter_of_falling_balls = 0;
 	audio.play();
 	context = canvas.getContext("2d");
 	board = new Array();
@@ -322,11 +321,8 @@ function UpdatePosition() {
 	checkBonusPoints(shape.i, shape.j);
 	if (checkMonsters(shape.i, shape.j)){
 		lblScore.value = score;
-		//$('#lblScore').show();
 		stopGame();
 		window.alert("Loser!");
-		//window.alert.close();
-		//musicStop();
 		return;
 	}
 	var x = GetKeyPressed();
@@ -368,7 +364,6 @@ function UpdatePosition() {
 		if(score < 100 ){
 			stopGame();
 			window.alert("You are better than " + score + " points!");
-			return;
 		}
 		else{
 			stopGame();
@@ -376,10 +371,11 @@ function UpdatePosition() {
 		}
 	}
 	if (counter_of_falling_balls >= number_of_balls){
+		counter_of_falling_balls = 0;
 		stopGame();
 		window.alert("Winner!!!");
 	}
-	 else {
+	else {
 		Draw(lastPressed);
 	}
 }
